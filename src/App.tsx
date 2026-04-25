@@ -157,9 +157,9 @@ function App() {
               <div>
                 <h4 className="font-black mb-4">Contact</h4>
                 <div className="space-y-2 text-sm text-gray-400">
-                  <p>sales@legacybattery.com</p>
-                  <p>+1 (800) 123-4567</p>
-                  <p>Tech Valley, CA 94025</p>
+                  <p>pnsinghkalakar@gmail.com</p>
+                  <p>+91 9450886621</p>
+                  <p>Rudrapur, Deoria, UP</p>
                   <div className="flex gap-3 mt-4">
                     {['💼', '🐦', '👤', '📷'].map((icon, i) => (
                       <button

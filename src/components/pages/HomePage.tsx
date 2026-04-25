@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Battery3D } from '../Battery3D';
 import { ArrowRight, Zap, Shield, Leaf, TrendingUp } from 'lucide-react';
@@ -6,6 +6,55 @@ import { ArrowRight, Zap, Shield, Leaf, TrendingUp } from 'lucide-react';
 interface HomePageProps {
   onNavigate: (page: string, productId?: string) => void;
 }
+
+// Animated Battery Image Component
+const AnimatedBatteryImage = ({ mousePosition }: { mousePosition: { x: number; y: number } }) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{
+        rotateX: mousePosition.y * -0.6,
+        rotateY: mousePosition.x * 0.6,
+      }}
+      whileHover={{ scale: 1.05 }}
+      transition={{ type: "spring", stiffness: 120, damping: 15 }}
+      className="relative w-full h-full flex items-center justify-center"
+    >
+      {/* Glow */}
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[var(--neon-blue)]/20 to-[var(--neon-green)]/20 blur-2xl opacity-70" />
+
+      {/* Image */}
+      <motion.img
+        src="/battery.jpeg"
+        alt="Battery"
+        className="relative z-10 rounded-2xl border border-white/10 shadow-2xl w-full h-full object-cover"
+        whileHover={{ scale: 1.02 }}
+        transition={{ duration: 0.3 }}
+      />
+
+      {/* Grid overlay */}
+      <div className="absolute inset-0 z-20 rounded-2xl pointer-events-none bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:24px_24px]" />
+
+      {/* Subtle shine sweep */}
+      <motion.div
+        className="absolute inset-0 z-30 rounded-2xl pointer-events-none"
+        initial={{ x: "-100%" }}
+        animate={{ x: "100%" }}
+        transition={{
+          repeat: Infinity,
+          duration: 3,
+          ease: "linear",
+        }}
+        style={{
+          background:
+            "linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.15), transparent 70%)",
+        }}
+      />
+    </motion.div>
+  );
+};
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   const { scrollY } = useScroll();
@@ -123,7 +172,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 className="inline-block px-4 py-2 rounded-full glass border border-[var(--neon-blue)]/30"
               >
                 <span className="text-[var(--neon-blue)] text-sm tracking-wider">
-                  ⚡ NEXT-GENERATION POWER
+                  Virsen Enterprises
                 </span>
               </motion.div>
 
@@ -188,9 +237,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 className="grid grid-cols-3 gap-6 pt-8"
               >
                 {[
-                  { value: '7000+', label: 'Cycles' },
-                  { value: '25min', label: 'Fast Charge' },
-                  { value: '20yr', label: 'Warranty' },
+                  { value: 'Up to8 Hr+', label: 'Battery Life' },
+                  { value: 'Vast Range', label: 'of products' },
+                  { value: '5 yr', label: 'Replacement Warranty' },
                 ].map((stat, i) => (
                   <div key={i} className="text-center">
                     <div className="text-3xl font-black text-[var(--neon-blue)]">{stat.value}</div>
@@ -255,6 +304,21 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Battery Image Card - First Position */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0, duration: 0.6 }}
+              whileHover={{ scale: 1.05, y: -5 }}
+              className="glass rounded-2xl p-6 border border-[var(--neon-blue)]/20 hover:border-[var(--neon-blue)]/50 transition-all cursor-pointer group overflow-hidden"
+            >
+              <div className="h-64">
+                <AnimatedBatteryImage mousePosition={mousePosition} />
+              </div>
+            </motion.div>
+
+            {/* Feature Cards */}
             {features.map((feature, i) => {
               const Icon = feature.icon;
               const colors = {
@@ -270,7 +334,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.6 }}
+                  transition={{ delay: (i + 1) * 0.1, duration: 0.6 }}
                   whileHover={{ scale: 1.05, y: -5 }}
                   className="glass rounded-2xl p-6 border border-[var(--neon-blue)]/20 hover:border-[var(--neon-blue)]/50 transition-all cursor-pointer group"
                 >

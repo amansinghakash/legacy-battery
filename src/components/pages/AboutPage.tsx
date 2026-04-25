@@ -35,12 +35,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
   ];
 
   const milestones = [
-    { year: '2018', title: 'Company Founded', description: 'Legacy Battery established with a vision to revolutionize energy storage' },
-    { year: '2019', title: 'First Product Launch', description: 'Released our flagship EV battery series' },
-    { year: '2021', title: 'Global Expansion', description: 'Expanded operations to 25+ countries' },
-    { year: '2023', title: '1M Units Sold', description: 'Reached milestone of 1 million batteries delivered' },
-    { year: '2025', title: 'Innovation Award', description: 'Recognized as Technology Leader of the Year' },
-    { year: '2026', title: 'Next-Gen Tech', description: 'Launching solid-state battery technology' },
+    { year: 'Feb-2026', title: 'Company Founded', description: 'Legacy Battery established with a vision to revolutionize energy storage' },
+    { year: 'March-2026', title: 'First Product Launch', description: 'Released our flagship battery series' },
+    { year: 'April-2026', title: 'Expansion', description: 'Expanded operations to 25+ stores accross Gorakhpur' },
+    { year: 'April-2026', title: '1st Batch Sold', description: 'Reached milestone of 1st batch batteries delivered' },
+    { year: '2026', title: 'Wide variety', description: 'Expanded product range to meet diverse needs- 100 Ah/ 125 Ah/150 Ah/ 200 Ah/ 250 Ah' },
+    { year: '2026', title: 'Next-Gen Tech', description: 'Launching more advanced battery technology' },
   ];
 
   return (
@@ -81,17 +81,17 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               repeat: Infinity,
             }}
           />
-          <div className="relative z-10 max-w-4xl">
-            <h2 className="text-4xl font-black mb-6">Our Story</h2>
-            <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
+          <div className="relative z-10 max-w-4xl mx-auto">
+            <h2 className="text-4xl font-black mb-6 text-center">Our Story</h2>
+            <div className="space-y-4 text-lg text-gray-300 leading-relaxed text-center">
               <p>
-                Founded in 2018, Legacy Battery emerged from a simple yet powerful vision: to create battery technology that doesn't just power devices, but powers a sustainable future. Our founders, a team of electrochemical engineers and sustainability experts, recognized the urgent need for cleaner, more efficient energy storage solutions.
+                Founded under Virsen Enterprises, Legacy Battery was built to honor the values and principles of <b>Late Virsen Singh Ji</b>, whose dedication, integrity, and forward-thinking mindset laid the foundation for everything we stand for today. His belief in quality, trust, and long-term impact continues to guide every step we take.
               </p>
               <p>
-                From our first prototype to today's industry-leading products, we've remained committed to innovation without compromise. Every battery we produce represents countless hours of research, rigorous testing, and an unwavering dedication to excellence.
+              At Legacy Battery, we specialize in advanced <b>lithium-ion (Li-ion)</b> battery solutions, engineered to meet the demands of modern energy needs. Our products are designed with a focus on performance, durability, and sustainability, ensuring reliable power for homes, industries, and emerging technologies.
               </p>
               <p>
-                Today, Legacy Battery powers electric vehicles, homes, and industries across the globe. But we're not just building batteries—we're building a legacy of sustainable power for generations to come.
+                Today, Legacy Battery can power electric vehicles, homes, and industries. But we're not just building batteries—we're building a legacy of sustainable power for generations to come.
               </p>
             </div>
           </div>
@@ -258,10 +258,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         >
           <div className="grid md:grid-cols-4 gap-8 text-center">
             {[
-              { value: '1M+', label: 'Batteries Sold' },
-              { value: '25+', label: 'Countries' },
-              { value: '500+', label: 'Team Members' },
-              { value: '15+', label: 'R&D Centers' },
+              { value: '25+', label: 'Authorised store' },
+              { value: '10+', label: 'Products, for various applications' },
+              { value: '50+', label: 'Team Members' },
+              { value: '13,500/-*', label: 'Starting at*' },
             ].map((stat, i) => (
               <motion.div
                 key={i}
