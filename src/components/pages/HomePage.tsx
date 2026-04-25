@@ -27,7 +27,7 @@ const AnimatedBatteryImage = ({ mousePosition }: { mousePosition: { x: number; y
 
       {/* Image */}
       <motion.img
-        src="/battery.jpeg"
+        src="./battery.jpeg"
         alt="Battery"
         className="relative z-10 rounded-2xl border border-white/10 shadow-2xl w-full h-full object-cover"
         whileHover={{ scale: 1.02 }}
